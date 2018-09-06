@@ -8,6 +8,7 @@ gem 'rails', '5.2.0'
 gem 'pg', '1.1.0'
 
 gem 'bootstrap', '4.1.1'
+gem 'font-awesome-sass', '5.3.1'
 gem 'bcrypt', '3.1.12'
 gem 'faker', '1.8.7'
 gem 'carrierwave', '1.2.3'
