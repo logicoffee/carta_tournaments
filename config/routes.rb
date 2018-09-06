@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'teams/show'
-  get 'teams/new'
-  get 'teams/edit'
   root 'static_pages#home'
   get :info, to: 'static_pages#info'
+
+  resource :team, except: %i[new create destroy]
+  get  :sign_up, to: 'teams#new'
+  post :sign_up, to: 'teams#create'
 end
