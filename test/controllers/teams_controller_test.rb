@@ -1,18 +1,13 @@
 require 'test_helper'
 
 class TeamsControllerTest < ActionDispatch::IntegrationTest
-  test "should get show" do
-    get teams_show_url
-    assert_response :success
-  end
-
   test "should get new" do
-    get teams_new_url
+    get sign_up_path
     assert_response :success
   end
 
   test "should get edit" do
-    get teams_edit_url
+    get edit_team_path
     assert_response :success
   end
 
