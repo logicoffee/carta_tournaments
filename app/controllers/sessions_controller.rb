@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     team = Team.find_by(email: params[:email])
     if team && team.authenticate(params[:password])
-      session[:team_id] = team.id
+      sign_in team
       redirect_to team_path
     else
       flash.now[:danger] = "メールアドレスまたはパスワードが正しくありません"
