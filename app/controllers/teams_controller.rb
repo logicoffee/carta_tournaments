@@ -10,7 +10,7 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     if @team.save
       flash[:success] = "新規かるた会登録が完了しました"
-      redirect_to team_path(@team)
+      redirect_to team_path
     else
       render 'new'
     end
