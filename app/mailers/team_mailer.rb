@@ -5,9 +5,8 @@ class TeamMailer < ApplicationMailer
   #
   #   en.team_mailer.account_activation.subject
   #
-  def account_activation
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def account_activation(team)
+    @team = team
+    mail to: @team.email, subject: 'アカウントの有効化'
   end
 end

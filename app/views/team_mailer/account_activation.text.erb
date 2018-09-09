@@ -1,3 +1,4 @@
-Team#account_activation
+<%= @team.name %> 様
+当サイトへの仮登録ありがとうございます. 以下のリンクをクリックして, アカウントの有効化をしてください.
 
-<%= @greeting %>, find me in app/views/team_mailer/account_activation.text.erb
+<%= account_activation_url(@team.activation_token, email: @team.email) %>
