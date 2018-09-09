@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   post   :sign_in, to: 'sessions#create'
   delete :sign_out, to: 'sessions#destroy'
 
-  get :account_activation, to: 'account_activations#activate'
+  get 'account_activation/:id', to: 'account_activations#activate', as: :account_activation
 end
