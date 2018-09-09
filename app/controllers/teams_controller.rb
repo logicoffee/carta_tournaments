@@ -11,9 +11,9 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     if @team.save
-      flash[:success] = "新規かるた会登録が完了しました"
-      sign_in @team
-      redirect_to team_path
+      flash[:info] = "アカウントの仮登録が完了しました. メールを確認してください."
+      TeamMailer.account_activation(@team).deliver_now
+      redirect_to root_url
     else
       render 'new'
     end
