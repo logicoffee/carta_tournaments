@@ -1,0 +1,17 @@
+<h1>ログイン</h1>
+<div class="row justify-content-center">
+  <div class="col-4">
+    <%= form_tag sign_in_path do %>
+      <%= label_tag :email %>
+      <%= email_field_tag :email, nil, class: 'form-control' %>
+
+      <%= label_tag :password %>
+      <%= password_field_tag :password, nil, class: 'form-control' %>
+
+      <%= submit_tag "ログイン", class: 'btn btn-primary' %>
+    <% end %>
+    <p class="mt-1">
+      新規登録は<%= link_to 'こちら', sign_up_path %>から
+    </p>
+  </div>
+</div>

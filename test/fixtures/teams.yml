@@ -1,0 +1,5 @@
+kyoto:
+  name: "京都大学かるた会"
+  leader: "京大かる太"
+  email: "kyoto@example.com"
+  password_digest: <%= BCrypt::Password.create('password') %>
