@@ -9,4 +9,12 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  
+  def sign_in_as(team)
+    session[:team_id] = team.id
+  end
+
+  def is_signed_in?
+    session[:team_id].present?
+  end
 end

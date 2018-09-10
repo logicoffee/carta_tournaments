@@ -1,0 +1,4 @@
+<%= @team.name %> 様
+当サイトへの仮登録ありがとうございます. 以下のリンクをクリックして, アカウントの有効化をしてください.
+
+<%= account_activation_url(@team.activation_token, email: @team.email) %>
