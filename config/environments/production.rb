@@ -67,6 +67,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   host = 'carta-72nd-kyoto.herokuapp.com'
+  config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
     address: 'smpt.sendgrid.net',
     port: '587',
