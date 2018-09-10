@@ -4,6 +4,7 @@ class AccountActivationsController < ApplicationController
     if team && !team.activated? && BCrypt::Password.new(team.activation_digest) == params[:id]
       team.update_columns(activated: true, activated_at: Time.zone.now)
       sign_in team
+      flash[:success] = "アカウントの有効化が完了しました"
       redirect_to team_url
     else
       flash[:danger] = "不正なアカウント有効化URLです"
