@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'players/new'
   root 'static_pages#home'
   get :info, to: 'static_pages#info'
 
