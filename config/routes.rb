@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  get 'players/new'
   root 'static_pages#home'
   get :info, to: 'static_pages#info'
 
-  resource :team, except: %i[new create destroy]
+  resource :team, except: %i[new create destroy] do
+    resources :players, only: %i[new create destroy]
+  end
   get  :sign_up, to: 'teams#new'
   post :sign_up, to: 'teams#create'
 
