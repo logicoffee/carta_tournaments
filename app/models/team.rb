@@ -1,4 +1,5 @@
 class Team < ApplicationRecord
+  has_many :players
   has_secure_password
   attr_accessor :activation_token
   before_save :downcase_email
