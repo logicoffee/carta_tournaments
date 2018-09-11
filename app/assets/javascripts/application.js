@@ -16,4 +16,5 @@
 //= bootstrap
 //= require activestorage
 //= require turbolinks
+//= require nested_form_fields
 //= require_tree .

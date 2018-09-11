@@ -16,6 +16,7 @@ gem 'mini_magick', '4.8.0'
 gem 'will_paginate', '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'jp_prefecture', '0.9.0'
+gem 'nested_form_fields', '0.8.2'
 # Use Puma as the app server
 gem 'puma', '3.11.4'
 # Use SCSS for stylesheets
