@@ -10,8 +10,11 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   
-  def sign_in_as(team)
-    session[:team_id] = team.id
+  def sign_in_as(team, password: "password")
+    post sign_in_path, params: {
+      email: team.email,
+      password: password
+    }
   end
 
   def is_signed_in?
