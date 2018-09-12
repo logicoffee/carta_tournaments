@@ -7,7 +7,7 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
 
   test "should get new" do
     sign_in_as @team
-    get new_team_player_path(rank: "C")
+    get entries_team_path(rank: "C")
     assert_response :success
   end
 

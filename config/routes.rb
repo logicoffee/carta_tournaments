@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get :info, to: 'static_pages#info'
 
   resource :team, except: %i[new create destroy] do
-    resources :players, only: %i[new create destroy]
+    get    :entries,      to: 'players#new'
+    post   :entries,      to: 'players#create'
+    delete 'entries/:id', to: 'players#destroy'
   end
   get  :sign_up, to: 'teams#new'
   post :sign_up, to: 'teams#create'
