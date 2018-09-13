@@ -1,2 +1,15 @@
-<h1>Teams#show</h1>
-<p>Find me in app/views/teams/show.html.erb</p>
+<h1><%= @team.name %></h1> 
+
+<div class="row justify-content-center mt-4">
+  <div class="col-3">
+    <%= link_to 'C級申込', entries_team_path(rank: 'C'), class: 'btn btn-outline-primary btn-block', data: { 'turbolinks': false } %>
+  </div>
+
+  <div class="col-3">
+    <%= link_to 'D級申込', entries_team_path(rank: 'D'), class: 'btn btn-outline-primary btn-block', data: { 'turbolinks': false } %>
+  </div>
+
+  <div class="col-3">
+    <%= link_to 'E級申込', entries_team_path(rank: 'E'), class: 'btn btn-outline-primary btn-block', data: { 'turbolinks': false } %>
+  </div>
+</div>

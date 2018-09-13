@@ -2,6 +2,7 @@ class TeamsController < ApplicationController
   before_action :require_sign_in, only: %i[show]
 
   def show
+    @team = current_team
   end
 
   def new
