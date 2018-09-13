@@ -5,5 +5,10 @@
       <li class="nav-item"><%= link_to "大会情報", info_path, class: 'nav-link' %></li>
       <li class="nav-item"><%= link_to "お問合せ", '#', class: 'nav-link' %></li>
     </ul>
+    <% if signed_in? %>
+      <%= link_to "Myかるた会", team_path, class: 'btn btn-success btn-sm border-white ml-2' %>
+    <% else %>
+      <%= link_to "ログイン", sign_in_path, class: 'btn btn-success border-white ml-2' %>
+    <% end %>
   </div>
 </nav>
