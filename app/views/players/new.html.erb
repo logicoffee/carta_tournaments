@@ -1,2 +1,41 @@
-<h1>Players#new</h1>
-<p>Find me in app/views/players/new.html.erb</p>
+<h1>選手登録</h1>
+
+<%= form_tag entries_team_path(rank: @rank) do %>
+  <table class="table table-bordered table-striped table-hover">
+    <tr>
+      <th>氏</th>
+      <th>名</th>
+      <th>氏(ふりがな)</th>
+      <th>名(ふりがな)</th>
+    </tr>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= text_field_tag 'players[][last_name]',       player.last_name,       class: 'form-control' %></td>
+        <td><%= text_field_tag 'players[][first_name]',      player.first_name,      class: 'form-control' %></td>
+        <td><%= text_field_tag 'players[][last_name_kana]',  player.last_name_kana,  class: 'form-control' %></td>
+        <td><%= text_field_tag 'players[][first_name_kana]', player.first_name_kana, class: 'form-control' %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= button_tag '入力欄を追加', type: 'button', class: 'btn btn-primary', id: 'add_form_button' %>
+  <%= submit_tag '参加申込', class: 'btn btn-primary' %>
+<% end %>
+
+<script type="text/html", id="form_template">
+    <td><%= text_field_tag 'players[][last_name]',       nil, class: 'form-control' %></td>
+    <td><%= text_field_tag 'players[][first_name]',      nil, class: 'form-control' %></td>
+    <td><%= text_field_tag 'players[][last_name_kana]',  nil, class: 'form-control' %></td>
+    <td><%= text_field_tag 'players[][first_name_kana]', nil, class: 'form-control' %></td>
+</script>
+
+<script>
+  $(function(){
+    var button   = $('#add_form_button');
+    button.click(function(){
+      var template = $('#form_template').html();
+      var table    = $('table');
+      var row      = $('<tr>').html(template)
+      table.append(row);
+    });
+  });
+</script>
