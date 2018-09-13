@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      team: かるた会
+      player: 選手
+    attributes:
+      team:
+        name: かるた会名
+        leader: 代表者名
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+      player:
+        last_name: 氏
+        first_name: 名
+        last_name_kana: 氏(ふりがな)
+        first_name_kana: 名(ふりがな)
