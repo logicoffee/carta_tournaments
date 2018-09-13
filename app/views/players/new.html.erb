@@ -1,4 +1,4 @@
-<h1>選手登録</h1>
+<h1><%= @rank %>級出場申込</h1>
 
 <%= form_tag entries_team_path(rank: @rank) do %>
   <% if @error_messages.present? %>
