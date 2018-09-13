@@ -19,11 +19,12 @@ class PlayersController < ApplicationController
       Player.new(player_params)
     end
 
-    valid = @players.inject(true) do |result, player|
-      result & player.valid?
+    @error_messages = @players.inject([]) do |result, player|
+      player.valid?
+      result | player.errors.full_messages
     end
 
-    if valid
+    if @error_messages.empty?
       @players.each(&:save)
       flash[:success] = "申込が完了しました"
       redirect_to team_url

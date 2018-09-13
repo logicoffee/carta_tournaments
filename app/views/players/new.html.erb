@@ -1,6 +1,24 @@
 <h1>選手登録</h1>
 
 <%= form_tag entries_team_path(rank: @rank) do %>
+  <% if @error_messages.present? %>
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <p class="alert alert-danger text-center">入力エラーが存在します</p>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <ul>
+          <% @error_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
   <table class="table table-bordered table-striped table-hover">
     <tr>
       <th>氏</th>
@@ -9,7 +27,7 @@
       <th>名(ふりがな)</th>
     </tr>
     <% @players.each do |player| %>
-      <tr>
+      <tr class="<%= "bg-warning" if player.errors.full_messages.present? %>">
         <td><%= text_field_tag 'players[][last_name]',       player.last_name,       class: 'form-control' %></td>
         <td><%= text_field_tag 'players[][first_name]',      player.first_name,      class: 'form-control' %></td>
         <td><%= text_field_tag 'players[][last_name_kana]',  player.last_name_kana,  class: 'form-control' %></td>
