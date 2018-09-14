@@ -27,7 +27,7 @@
             <th>氏名</th>
             <th>キャンセル</th>
           </tr>
-          <%= render partial: 'shared/player', collection: entry_list %>
+          <%= render partial: 'shared/player', collection: entry_list, locals: { maximum_id: maximum_entrant_id_of(KyotoRank::RankData.ranks[index])} %>
         </table>
       <% end %>
     </div>
