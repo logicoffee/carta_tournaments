@@ -6,7 +6,13 @@
       <li class="nav-item"><%= link_to "お問合せ", '#', class: 'nav-link' %></li>
     </ul>
     <% if signed_in? %>
-      <%= link_to "Myかるた会", team_path, class: 'btn btn-success btn-sm border-white ml-2' %>
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" href="#" id="navbarDropdown" aria-haspopup="true" aria-expanded="false">Myかるた会</a>
+        <div class="dropdown-menu"  aria-labelledby="navbarDropdown">
+          <%= link_to "#{current_team.name}", team_path, class: "dropdown-item" %>
+          <%= link_to "ログアウト", '#', class: "dropdown-item" %>
+        </div>
+      </div>
     <% else %>
       <%= link_to "ログイン", sign_in_path, class: 'btn btn-success border-white ml-2' %>
     <% end %>
