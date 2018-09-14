@@ -6,6 +6,7 @@ ruby '2.5.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.2.0'
 gem 'pg', '1.1.0'
+gem 'config', '1.7.0'
 
 gem 'bootstrap', '4.1.1'
 gem 'font-awesome-sass', '5.3.1'
