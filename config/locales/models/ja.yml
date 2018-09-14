@@ -15,3 +15,5 @@ ja:
         first_name: 名
         last_name_kana: 氏(ふりがな)
         first_name_kana: 名(ふりがな)
+        full_name: 氏名
+        full_name_kana: ふりがな
