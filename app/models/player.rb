@@ -7,4 +7,8 @@ class Player < ApplicationRecord
   validates :first_name_kana, presence: true, length: { maximum: 50 }, format: { with: /\A\p{Hiragana}+\z/ }
   validates :rank_code,       presence: true,                          format: { with: /\A[C-E]\z/ }
   validates :team_id,         presence: true
+
+  def full_name
+    last_name + ' ' + first_name
+  end
 end
