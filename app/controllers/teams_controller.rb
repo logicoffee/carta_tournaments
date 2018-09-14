@@ -3,6 +3,9 @@ class TeamsController < ApplicationController
 
   def show
     @team = current_team
+    @entry_lists = KyotoRank::RankData.ranks.map do |rank|
+      Player.joins(:team).where(teams: { id: @team.id }, rank_code: rank)
+    end
   end
 
   def new
