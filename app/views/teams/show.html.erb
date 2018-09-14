@@ -13,3 +13,27 @@
     <%= link_to 'E級申込', entries_team_path(rank: 'E'), class: 'btn btn-outline-primary btn-block', data: { 'turbolinks': false } %>
   </div>
 </div>
+
+<h2 class="mt-5 mb-4">現在の申込状況</h2>
+<ul>
+<li>上に表示されている選手ほど, 出場の優先順位は高くなります</li>
+<li>グレーの背景色はキャンセル待ちを表しています</li>
+</ul>
+<div class="row justify-content-center mt-5">
+  <% @entry_lists.each_with_index do |entry_list, index| %>
+    <div class="col-4">
+      <h3><%= KyotoRank::RankData.ranks[index] %>級</h3>
+      <% if entry_list.empty? %>
+        申込者はいません
+      <% else %>
+        <table class="table">
+          <tr>
+            <th>氏名</th>
+            <th>キャンセル</th>
+          </tr>
+          <%= render partial: 'shared/player', collection: entry_list, locals: { maximum_id: maximum_entrant_id_of(KyotoRank::RankData.ranks[index])} %>
+        </table>
+      <% end %>
+    </div>
+  <% end %>
+</div>
