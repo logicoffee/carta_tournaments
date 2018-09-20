@@ -33,6 +33,24 @@ class PlayersController < ApplicationController
     end
   end
 
+  def destroy
+    player = Player.find(params[:id])
+
+    if current_team.players.include?(player)
+      if player.deleted?
+        flash[:danger] = "すでに申込がキャンセルされています"
+        redirect_to team_url
+      else
+        player.logical_delete
+        flash[:success] = "申込を1件キャンセルしました"
+        redirect_to team_url
+      end
+    else
+      flash[:danger] = "他会の申込をキャンセルすることはできません"
+      redirect_to team_url
+    end
+  end
+
   private
     def team_params
       params.require(:team)
