@@ -34,11 +34,9 @@ class PlayersController < ApplicationController
   end
 
   def destroy
-    player = Player.find(params[:id])
+    player = Player.find_by!(id: params[:id], team_id: session[:team_id])
 
-    if current_team.players.exclude?(player)
-      flash[:danger] = "不正なIDです"
-    elsif player.deleted?
+    if player.deleted?
       flash[:danger] = "すでに申込がキャンセルされています"
     else
       player.delete_logically
