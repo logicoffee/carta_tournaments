@@ -37,7 +37,7 @@ class PlayersController < ApplicationController
     player = Player.find(params[:id])
 
     if current_team.players.exclude?(player)
-      flash[:danger] = "他会の申込をキャンセルすることはできません"
+      flash[:danger] = "不正なIDです"
     elsif player.deleted?
       flash[:danger] = "すでに申込がキャンセルされています"
     else
