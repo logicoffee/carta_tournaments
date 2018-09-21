@@ -11,7 +11,7 @@ class Player < ApplicationRecord
     last_name + ' ' + first_name
   end
 
-  def logical_delete
+  def delete_logically
     update_attribute(:deleted, true)
   end
 

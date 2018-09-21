@@ -41,7 +41,7 @@ class PlayersController < ApplicationController
     elsif player.deleted?
       flash[:danger] = "すでに申込がキャンセルされています"
     else
-      player.logical_delete
+      player.delete_logically
       flash[:success] = "申込を1件キャンセルしました"
     end
     redirect_to team_url
