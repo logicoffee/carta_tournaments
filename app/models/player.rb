@@ -11,6 +11,10 @@ class Player < ApplicationRecord
     last_name + ' ' + first_name
   end
 
+  def delete_logically
+    update_attribute(:deleted, true)
+  end
+
   private
     def full_name_should_be_present
       if last_name.blank? || first_name.blank?

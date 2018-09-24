@@ -1,4 +1,4 @@
 <tr class="<%= 'bg-lightgray' if player.id > maximum_id %>">
   <td><%= player.full_name %></td>
-  <td></td>
+  <td><%= link_to "キャンセル", delete_entry_team_path(player), method: :delete, class: 'btn btn-secondary btn-sm' %></td>
 </tr>
