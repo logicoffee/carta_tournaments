@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'sessions/new'
+  end
   root 'static_pages#home'
   get :info, to: 'static_pages#info'
 
