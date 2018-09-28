@@ -7,3 +7,10 @@ kyoto = Team.create!(
   activated: true,
   activated_at: Time.zone.now
 )
+
+ogura = Admin.create!(
+  name: "小倉京子",
+  email: "ogura@example.com",
+  password: "password",
+  password_confirmation: "password"
+)
