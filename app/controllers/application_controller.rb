@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
+  include Admin::SessionsHelper
   protect_from_forgery with: :exception
 
   private
