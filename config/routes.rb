@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'sessions/new'
-  end
   root 'static_pages#home'
   get :info, to: 'static_pages#info'
 
@@ -18,4 +15,9 @@ Rails.application.routes.draw do
   delete :sign_out, to: 'sessions#destroy'
 
   get 'account_activation/:id', to: 'account_activations#activate', as: :account_activation
+
+  namespace :admin do
+    get  :sign_in, to: 'sessions#new'
+    post :sign_in, to: 'sessions#create'
+  end
 end
