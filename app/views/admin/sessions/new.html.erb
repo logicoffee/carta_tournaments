@@ -1,2 +1,14 @@
-<h1>Admin::Sessions#new</h1>
-<p>Find me in app/views/admin/sessions/new.html.erb</p>
+<h1>管理者ログイン</h1>
+<div class="row justify-content-center">
+  <div class="col-4">
+    <%= form_tag admin_sign_in_path do %>
+      <%= label_tag :email, 'メールアドレス' %>
+      <%= email_field_tag :email, nil, class: 'form-control mb-4' %>
+
+      <%= label_tag :password, 'パスワード' %>
+      <%= password_field_tag :password, nil, class: 'form-control mb-4' %>
+
+      <%= submit_tag "ログイン", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
