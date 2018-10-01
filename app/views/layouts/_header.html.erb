@@ -13,14 +13,6 @@
           <%= link_to "ログアウト", sign_out_path, method: :delete, class: "dropdown-item" %>
         </div>
       </div>
-    <% elsif admin_signed_in? %>
-      <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" href="#" id="navbarDropdown" aria-haspopup="true" aria-expanded="false">管理者ログイン中</a>
-        <div class="dropdown-menu"  aria-labelledby="navbarDropdown">
-          <%= link_to "参加者一覧", '#', class: "dropdown-item" %>
-          <%= link_to "ログアウト", '#', method: :get, class: "dropdown-item" %>
-        </div>
-      </div>
     <% else %>
       <%= link_to "ログイン", sign_in_path, class: 'btn btn-success border-white ml-2' %>
     <% end %>

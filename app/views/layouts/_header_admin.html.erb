@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand navbar-dark bg-success">
+  <div class="container">
+    <%= link_to "第72回競技かるた京都大会管理者ページ", '#', class: 'navbar-brand mr-auto' %>
+    <ul class="navbar-nav">
+      <li class="nav-item"><%= link_to "大会情報", info_path, class: 'nav-link' %></li>
+      <li class="nav-item"><%= link_to "お問合せ", '#', class: 'nav-link' %></li>
+    </ul>
+
+    <% if admin_signed_in? %>
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" href="#" id="navbarDropdown" aria-haspopup="true" aria-expanded="false">管理者ログイン中</a>
+        <div class="dropdown-menu"  aria-labelledby="navbarDropdown">
+          <%= link_to "参加者一覧", '#', class: "dropdown-item" %>
+          <%= link_to "ログアウト", '#', method: :get, class: "dropdown-item" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</nav>
