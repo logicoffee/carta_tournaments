@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'account_activation/:id', to: 'account_activations#activate', as: :account_activation
 
   namespace :admin do
+    root 'players#index'
     get  :sign_in, to: 'sessions#new'
     post :sign_in, to: 'sessions#create'
   end
