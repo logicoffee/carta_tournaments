@@ -1,2 +1,16 @@
-<h1>Admin::Players#index</h1>
-<p>Find me in app/views/admin/players/index.html.erb</p>
+<h1>選手一覧</h1>
+
+<div class="row">
+  <% @all_players.each_with_index do |players, index| %>
+    <div class="col-4">
+      <h2><%= KyotoRank::RankData.ranks[index] %>級</h2>
+      <table class="table">
+        <tr>
+          <th>氏名</th>
+          <th>かるた会</th>
+        </tr>
+        <%= render partial: 'player', collection: players %>
+      </table>
+    </div>
+  <% end %>
+</div>
