@@ -9,7 +9,12 @@
           <th>氏名</th>
           <th>かるた会</th>
         </tr>
-        <%= render partial: 'player', collection: players %>
+        <% players.each do |player| %>
+          <tr>
+            <td><%= player.full_name %></td>
+            <td><%= player.team.name %></td>
+          </tr>
+        <% end %>
       </table>
     </div>
   <% end %>
