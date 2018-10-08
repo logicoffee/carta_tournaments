@@ -6,5 +6,12 @@ class Admin::PlayersController < ApplicationController
     @all_players = KyotoRank::RankData.ranks.map do |rank|
       Player.where(rank_code: rank).order(:created_at).limit(Settings.quota[rank])
     end
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        send_data render_to_string, filename: 'kyoto_c.csv', type: :csv
+      end
+    end
   end
 end
