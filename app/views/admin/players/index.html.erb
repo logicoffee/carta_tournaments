@@ -5,9 +5,9 @@
 </div>
 
 <div class="row">
-  <% @all_players.each_with_index do |players, index| %>
+  <% @all_players.each do |rank, players| %>
     <div class="col-4">
-      <h2><%= KyotoRank::RankData.ranks[index] %>級</h2>
+      <h2><%= rank %>級</h2>
       <table class="table">
         <tr>
           <th>氏名</th>
