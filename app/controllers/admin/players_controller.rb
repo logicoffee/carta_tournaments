@@ -4,7 +4,7 @@ class Admin::PlayersController < ApplicationController
 
   def index
     @all_players = KyotoRank::RankData.ranks.map do |rank|
-      [ rank, Player.where(rank_code: rank).order(:created_at) ]
+      [ rank, Player.includes(:team).where(rank_code: rank).order(:created_at) ]
     end
       .to_h
 
