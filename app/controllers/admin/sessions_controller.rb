@@ -14,4 +14,9 @@ class Admin::SessionsController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    admin_sign_out
+    redirect_to root_url
+  end
 end
