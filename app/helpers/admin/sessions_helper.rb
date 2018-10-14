@@ -6,4 +6,8 @@ module Admin::SessionsHelper
   def admin_signed_in?
     !session[:admin_id].nil?
   end
+
+  def admin_sign_out
+    session.delete(:admin_id)
+  end
 end
