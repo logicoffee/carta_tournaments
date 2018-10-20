@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  invitation_digest: MyString
+  signed_up: false
+
+two:
+  email: MyString
+  invitation_digest: MyString
+  signed_up: false
