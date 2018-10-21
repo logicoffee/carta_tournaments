@@ -1,0 +1,12 @@
+<h1>管理者の招待</h1>
+<div class="row justify-content-center">
+  <div class="col-4">
+    <%= render 'shared/error_messages', object: @invitation %>
+
+    <%= form_for @invitation, url: admin_invitations_path do |f| %>
+    <%= f.label :email, '招待したい人のメールアドレス' %>
+    <%= f.email_field :email, class: 'form-control mb-4' %>
+    <%= f.submit "招待メールを送る", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
