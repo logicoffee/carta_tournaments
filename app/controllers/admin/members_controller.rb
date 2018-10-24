@@ -7,8 +7,8 @@ class Admin::MembersController < ApplicationController
 
   private
     def require_invitation_token
-      @signing_up_admin = Admin.find_by(email: params[:email], signed_up: false)
-      unless @signing_up_admin && BCrypt::Password.new(@signing_up_admin.invitation_digest) == params[:id]
+      invitation = Invitation.find_by(email: params[:email], signed_up: false)
+      unless invitation && BCrypt::Password.new(invitation.invitation_digest) == params[:id]
         flash[:danger] = "不正なURLです"
         redirect_to root_url
       end
