@@ -8,6 +8,7 @@ class Admin::MembersController < ApplicationController
 
   def create
     @admin = Admin.new(admin_params)
+    @admin.email = params[:email]
     if @admin.save
       admin_sign_in @admin
       flash[:success] = "管理者登録が完了しました"
@@ -27,6 +28,6 @@ class Admin::MembersController < ApplicationController
     end
 
     def admin_params
-      params.require(:admin).permit(:name, :email, :password, :password_confirmation)
+      params.require(:admin).permit(:name, :password, :password_confirmation)
     end
 end
