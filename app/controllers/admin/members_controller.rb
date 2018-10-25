@@ -3,6 +3,18 @@ class Admin::MembersController < ApplicationController
   before_action :require_invitation_token
 
   def new
+    @admin = Admin.new(email: params[:email])
+  end
+
+  def create
+    @admin = Admin.new(admin_params)
+    if @admin.save
+      admin_sign_in @admin
+      flash[:success] = "管理者登録が完了しました"
+      redirect_to admin_root_url
+    else
+      render :new
+    end
   end
 
   private
@@ -12,5 +24,9 @@ class Admin::MembersController < ApplicationController
         flash[:danger] = "不正なURLです"
         redirect_to root_url
       end
+    end
+
+    def admin_params
+      params.require(:admin).permit(:name, :email, :password, :password_confirmation)
     end
 end
