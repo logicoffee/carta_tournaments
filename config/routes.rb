@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
     resources 'invitations', only: %i[new create]
     
-    get  'members/new/:id', to: 'members#new',    as: :new_members
-    post 'members/new/:id', to: 'members#create', as: :create_members
+    get  'sign_up/:id', to: 'members#new',    as: :new_sign_up
+    post 'sign_up/:id', to: 'members#create', as: :sign_up
   end
 end

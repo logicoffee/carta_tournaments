@@ -2,7 +2,7 @@
 
 <div class="row justify-content-center">
   <div class="col-4">
-    <%= form_for @signing_up_admin, url: admin_create_members_path(params[:id], email: params[:email]) do |f| %>
+    <%= form_for @signing_up_admin, url: admin_sign_up_path(params[:id], email: params[:email]) do |f| %>
       <%= render 'shared/error_messages', object: @signing_up_admin %>
 
       <%= f.label :name %>
