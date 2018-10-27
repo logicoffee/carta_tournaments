@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     delete :sign_out, to: 'sessions#destroy'
 
     resources 'invitations', only: %i[new create]
-    resources 'members', only: %i[new create]
+    
+    get  'sign_up/:id', to: 'members#new',    as: :new_sign_up
+    post 'sign_up/:id', to: 'members#create', as: :sign_up
   end
 end
