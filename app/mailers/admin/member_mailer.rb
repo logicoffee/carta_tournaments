@@ -5,7 +5,7 @@ class Admin::MemberMailer < ApplicationMailer
   #
   #   en.admin.member_mailer.invitation.subject
   #
-  def invitation(invitation)
+  def invitation_email(invitation)
     @invitation = invitation
     mail to: @invitation.email, subject: "管理者の招待"
   end
