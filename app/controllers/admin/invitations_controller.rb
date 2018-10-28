@@ -10,8 +10,8 @@ class Admin::InvitationsController < ApplicationController
     @invitation = Invitation.new(invitation_params)
 
     if @invitation.save
-      flash[:success] = "招待メールを送信しました"
       Admin::MemberMailer.invitation(@invitation).deliver_now
+      flash[:success] = "招待メールを送信しました"
       redirect_to admin_root_url
     else
       render :new
