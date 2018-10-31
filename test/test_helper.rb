@@ -31,4 +31,8 @@ class ActiveSupport::TestCase
   def admin_is_signed_in?
     session[:admin_id].present?
   end
+
+  def admin_sign_out
+    session.delete(:admin_id)
+  end
 end
