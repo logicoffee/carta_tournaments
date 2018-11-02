@@ -24,16 +24,19 @@ class AdminInvitationTest < ActionDispatch::IntegrationTest
     assert_equal 1, ActionMailer::Base.deliveries.size
     assert_redirected_to admin_root_url
     assert flash[:success].present?
-    token = assigns(:invitation).invitation_token
 
     # 招待された側の処理をテストするためにログアウト
     admin_sign_out
 
+    # メール本文から管理者登録用URLを抽出
+    sent_email  = ActionMailer::Base.deliveries.last
+    url_for_sign_up = /http.*/.match(sent_email.body.encoded).to_s
+
     # 管理者登録
-    get admin_new_sign_up_path(token, email: inv_email)
+    get url_for_sign_up
     assert_response :success
     assert_difference 'Admin.count', 1 do
-      post admin_sign_up_path(token, email: inv_email), params: {
+      post url_for_sign_up, params: {
         admin: {
           name: "招待された管理者",
           email: inv_email,
