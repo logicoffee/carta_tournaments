@@ -20,4 +20,19 @@ class ActiveSupport::TestCase
   def is_signed_in?
     session[:team_id].present?
   end
+
+  def admin_sign_in_as(admin, password: "password")
+    post admin_sign_in_path, params: {
+      email: admin.email,
+      password: password
+    }
+  end
+
+  def admin_is_signed_in?
+    session[:admin_id].present?
+  end
+
+  def admin_sign_out
+    session.delete(:admin_id)
+  end
 end
