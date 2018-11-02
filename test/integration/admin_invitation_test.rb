@@ -15,9 +15,11 @@ class AdminInvitationTest < ActionDispatch::IntegrationTest
     get new_admin_invitation_path
     inv_email = "foo@example.com"
     assert_difference 'Invitation.count', 1 do
-      post admin_invitations_path, params: { invitation: {
-        email: inv_email
-      } }
+      post admin_invitations_path, params: {
+        invitation: {
+          email: inv_email
+        }
+      }
     end
     assert_equal 1, ActionMailer::Base.deliveries.size
     assert_redirected_to admin_root_url
@@ -31,12 +33,14 @@ class AdminInvitationTest < ActionDispatch::IntegrationTest
     get admin_new_sign_up_path(token, email: inv_email)
     assert_response :success
     assert_difference 'Admin.count', 1 do
-      post admin_sign_up_path(token, email: inv_email), params: { admin: {
-        name: "招待された管理者",
-        email: inv_email,
-        password: "password",
-        password_confirmation: "password"
-      }}
+      post admin_sign_up_path(token, email: inv_email), params: {
+        admin: {
+          name: "招待された管理者",
+          email: inv_email,
+          password: "password",
+          password_confirmation: "password"
+        }
+      }
     end
     assert admin_is_signed_in?
   end
