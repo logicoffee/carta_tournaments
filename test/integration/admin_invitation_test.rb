@@ -23,7 +23,7 @@ class AdminInvitationTest < ActionDispatch::IntegrationTest
     end
     assert_equal 1, ActionMailer::Base.deliveries.size
     assert_redirected_to admin_root_url
-    assert_not flash[:success].empty?
+    assert flash[:success].present?
     token = assigns(:invitation).invitation_token
 
     # 招待された側の処理をテストするためにログアウト
