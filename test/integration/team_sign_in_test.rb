@@ -7,8 +7,7 @@ class TeamSignInTest < ActionDispatch::IntegrationTest
       email: "abcdefg@hijk.lmn",
       password: "wordpass"
     }
-    assert_not flash[:danger].empty?
-    assert_template 'sessions/new'
+    assert flash[:danger].present?
   end
 
   test "valid information" do
@@ -18,8 +17,6 @@ class TeamSignInTest < ActionDispatch::IntegrationTest
       email: kyoto.email,
       password: "password"
     }
-    assert_redirected_to team_path
-    follow_redirect!
-    assert_template 'teams/show'
+    assert_redirected_to team_url
   end
 end
