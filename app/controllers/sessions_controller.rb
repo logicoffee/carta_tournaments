@@ -4,16 +4,11 @@ class SessionsController < ApplicationController
 
   def create
     team = Team.find_by(email: params[:email])
-    if team && team.authenticate(params[:password])
-      if team.activated?
-        sign_in team
-        redirect_to team_url
-      else
-        flash[:warning] = "メールを確認し, アカウントの有効化を完了してください"
-        redirect_to root_url
-      end
+    if team && team.authenticate(params[:password]) && team.activated?
+      sign_in team
+      redirect_to team_url
     else
-      flash.now[:danger] = "メールアドレスまたはパスワードが正しくありません"
+      flash.now[:danger] = "メールアドレスまたはパスワードが正しくないか、アカウントの有効化が完了していません。"
       render 'new'
     end
   end
