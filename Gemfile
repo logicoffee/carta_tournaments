@@ -5,7 +5,7 @@ ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.2.0'
-gem 'pg', '1.1.0'
+gem 'pg', '1.1.3'
 gem 'config', '1.7.0'
 
 gem 'bootstrap', '4.1.3'
@@ -26,7 +26,7 @@ gem 'sass-rails', '5.0.7'
 gem 'uglifier', '4.1.11'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
-gem 'mini_racer', '0.2.0'
+gem 'mini_racer', '0.2.4'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '4.2.2'
