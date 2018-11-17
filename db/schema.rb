@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_27_023859) do
+ActiveRecord::Schema.define(version: 2018_11_17_083908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,13 @@ ActiveRecord::Schema.define(version: 2018_10_27_023859) do
     t.boolean "activated", default: false
     t.datetime "activated_at"
     t.index ["email"], name: "index_teams_on_email", unique: true
+  end
+
+  create_table "tournament_classes", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "fee", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "players", "teams"
