@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_17_092203) do
+ActiveRecord::Schema.define(version: 2018_11_18_041952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,16 +45,6 @@ ActiveRecord::Schema.define(version: 2018_11_17_092203) do
     t.index ["team_id"], name: "index_players_on_team_id"
   end
 
-  create_table "players_tournament_classes", id: false, force: :cascade do |t|
-    t.bigint "tournament_class_id", null: false
-    t.bigint "player_id", null: false
-  end
-
-  create_table "players_tournament_divisions", id: false, force: :cascade do |t|
-    t.bigint "tournament_division_id", null: false
-    t.bigint "player_id", null: false
-  end
-
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "leader"
@@ -75,6 +65,11 @@ ActiveRecord::Schema.define(version: 2018_11_17_092203) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tournament_classes_players", id: false, force: :cascade do |t|
+    t.bigint "tournament_class_id", null: false
+    t.bigint "player_id", null: false
+  end
+
   create_table "tournament_classes_ranks", force: :cascade do |t|
     t.integer "rank", null: false
     t.bigint "tournament_class_id"
@@ -87,6 +82,11 @@ ActiveRecord::Schema.define(version: 2018_11_17_092203) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tournament_class_id"], name: "index_tournament_divisions_on_tournament_class_id"
+  end
+
+  create_table "tournament_divisions_players", id: false, force: :cascade do |t|
+    t.bigint "tournament_division_id", null: false
+    t.bigint "player_id", null: false
   end
 
   add_foreign_key "players", "teams"
