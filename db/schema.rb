@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_014342) do
+ActiveRecord::Schema.define(version: 2018_11_21_021349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,12 +37,12 @@ ActiveRecord::Schema.define(version: 2018_11_21_014342) do
     t.string "last_name"
     t.string "first_name_kana"
     t.string "last_name_kana"
-    t.string "rank_code"
     t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "deleted", default: false, null: false
     t.jsonb "extra_attributes", null: false
+    t.integer "rank", null: false
     t.index ["team_id"], name: "index_players_on_team_id"
   end
 
