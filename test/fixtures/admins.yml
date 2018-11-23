@@ -2,3 +2,4 @@ ryo:
   name: 池谷涼
   email: ryo@example.com
   password_digest: <%= BCrypt::Password.create('password') %>
+  tournament: shiga
