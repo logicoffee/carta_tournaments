@@ -7,3 +7,9 @@ kyoto = Team.create!(
   activated: true,
   activated_at: Time.zone.now
 )
+
+shiga = Tournament.create!(
+  name: "滋賀県大会",
+  schedule: Time.zone.local(2019, 3, 21),
+  venue: "近江勧学館"
+)
