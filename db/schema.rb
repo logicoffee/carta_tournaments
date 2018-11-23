@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_27_023859) do
+ActiveRecord::Schema.define(version: 2018_11_21_023234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,9 @@ ActiveRecord::Schema.define(version: 2018_10_27_023859) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.bigint "tournament_id"
     t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["tournament_id"], name: "index_admins_on_tournament_id"
   end
 
   create_table "invitations", force: :cascade do |t|
@@ -37,11 +39,12 @@ ActiveRecord::Schema.define(version: 2018_10_27_023859) do
     t.string "last_name"
     t.string "first_name_kana"
     t.string "last_name_kana"
-    t.string "rank_code"
     t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "deleted", default: false, null: false
+    t.jsonb "extra_attributes", null: false
+    t.integer "rank", null: false
     t.index ["team_id"], name: "index_players_on_team_id"
   end
 
@@ -58,5 +61,54 @@ ActiveRecord::Schema.define(version: 2018_10_27_023859) do
     t.index ["email"], name: "index_teams_on_email", unique: true
   end
 
+  create_table "tournament_classes", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "fee", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "tournament_id"
+    t.index ["tournament_id"], name: "index_tournament_classes_on_tournament_id"
+  end
+
+  create_table "tournament_classes_players", id: false, force: :cascade do |t|
+    t.bigint "tournament_class_id", null: false
+    t.bigint "player_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tournament_classes_ranks", force: :cascade do |t|
+    t.integer "rank", null: false
+    t.bigint "tournament_class_id"
+    t.index ["tournament_class_id"], name: "index_tournament_classes_ranks_on_tournament_class_id"
+  end
+
+  create_table "tournament_divisions", force: :cascade do |t|
+    t.bigint "tournament_class_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tournament_class_id"], name: "index_tournament_divisions_on_tournament_class_id"
+  end
+
+  create_table "tournament_divisions_players", id: false, force: :cascade do |t|
+    t.bigint "tournament_division_id", null: false
+    t.bigint "player_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tournaments", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "schedule", null: false
+    t.string "venue", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "admins", "tournaments"
   add_foreign_key "players", "teams"
+  add_foreign_key "tournament_classes", "tournaments"
+  add_foreign_key "tournament_classes_ranks", "tournament_classes"
+  add_foreign_key "tournament_divisions", "tournament_classes"
 end
