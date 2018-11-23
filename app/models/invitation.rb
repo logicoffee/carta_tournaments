@@ -1,4 +1,5 @@
 class Invitation < ApplicationRecord
+  belongs_to :tournament
   attr_accessor :invitation_token
   before_create :create_invitation_digest
 
