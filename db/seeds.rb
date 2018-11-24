@@ -17,6 +17,6 @@ tournament = Tournament.create!(
 initial_admin = tournament.admins.create!(
   name: ENV["ADMIN_NAME"],
   email: ENV["ADMIN_EMAIL"],
-  password: "password",
-  password_confirmation: "password"
+  password: ENV["ADMIN_PASS"],
+  password_confirmation: ENV["ADMIN_PASS"]
 )
