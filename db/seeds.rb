@@ -8,8 +8,15 @@ kyoto = Team.create!(
   activated_at: Time.zone.now
 )
 
-shiga = Tournament.create!(
-  name: "滋賀県大会",
-  schedule: Time.zone.local(2019, 3, 21),
-  venue: "近江勧学館"
+tournament = Tournament.create!(
+  name: ENV["TOURNAMENT_NAME"],
+  schedule: ENV["TOURNAMENT_SCHEDULE"],
+  venue: ENV["TOURNAMENT_VENUE"]
+)
+
+initial_admin = tournament.admins.create!(
+  name: ENV["ADMIN_NAME"],
+  email: ENV["ADMIN_EMAIL"],
+  password: "password",
+  password_confirmation: "password"
 )
