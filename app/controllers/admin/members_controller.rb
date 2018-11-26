@@ -3,11 +3,11 @@ class Admin::MembersController < ApplicationController
   before_action :require_invitation_token
 
   def new
-    @admin = Admin.new(email: params[:email])
+    @admin = Tournament.find(params[:tournament_id]).admins.build(email: params[:email])
   end
 
   def create
-    @admin = Admin.new(admin_params)
+    @admin = Tournament.find(params[:tournament_id]).admins.build(admin_params)
     if @admin.save
       @invitation.update_attribute(:signed_up, true)
       admin_sign_in @admin

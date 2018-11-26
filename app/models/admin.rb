@@ -1,4 +1,5 @@
 class Admin < ApplicationRecord
+  belongs_to :tournament
   has_secure_password
 
   validates :email,    presence: true, length: { maximum: 255 },

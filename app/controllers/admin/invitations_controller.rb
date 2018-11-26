@@ -3,11 +3,11 @@ class Admin::InvitationsController < ApplicationController
   before_action :require_sign_in_as_admin
 
   def new
-    @invitation = Invitation.new
+    @invitation = current_tournament.invitations.build
   end
 
   def create
-    @invitation = Invitation.new(invitation_params)
+    @invitation = current_tournament.invitations.build(invitation_params)
 
     if @invitation.save
       Admin::MemberMailer.invitation_email(@invitation).deliver_now

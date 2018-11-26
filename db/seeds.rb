@@ -7,3 +7,16 @@ kyoto = Team.create!(
   activated: true,
   activated_at: Time.zone.now
 )
+
+tournament = Tournament.create!(
+  name: ENV["TOURNAMENT_NAME"],
+  schedule: ENV["TOURNAMENT_SCHEDULE"],
+  venue: ENV["TOURNAMENT_VENUE"]
+)
+
+initial_admin = tournament.admins.create!(
+  name: ENV["ADMIN_NAME"],
+  email: ENV["ADMIN_EMAIL"],
+  password: ENV["ADMIN_PASS"],
+  password_confirmation: ENV["ADMIN_PASS"]
+)

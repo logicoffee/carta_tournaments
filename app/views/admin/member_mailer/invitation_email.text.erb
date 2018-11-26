@@ -1,5 +1,5 @@
-第72回競技かるた京都大会
+かるた大会管理サイト
 
-当サイトの管理者として招待されています。以下のリンクより管理者登録を行ってください。
+<%= @invitation.tournament.name %>の運営管理者として招待されています。以下のリンクより登録を行ってください。
 
-<%= admin_new_sign_up_url(@invitation.invitation_token, email: @invitation.email) %>
+<%= admin_new_sign_up_url(@invitation.invitation_token, tournament_id: @invitation.tournament_id, email: @invitation.email) %>
