@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def this_tournament
+  def default_tournament
     @tournament ||= Tournament.first
   end
 end
