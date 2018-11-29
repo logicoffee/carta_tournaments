@@ -1,0 +1,8 @@
+- name: 上級者の部
+  fee:  1500
+- name: D級
+  fee:  1000
+- name: E級
+  fee:  1000
+- name: F級
+  fee:  1000
