@@ -1,0 +1,14 @@
+advanced_class:
+  tournament: shiga
+  name:       上級者の部
+  fee:        1500
+
+d_class:
+  tournament: shiga
+  name:       D級
+  fee:        1000
+
+e_class:
+  tournament: shiga
+  name:       E級
+  fee:        1000
