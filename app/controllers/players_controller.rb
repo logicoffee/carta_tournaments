@@ -34,6 +34,7 @@ class PlayersController < ApplicationController
 
   private
     def player_params 
+      params[:player][:extra_attributes] = params[:player][:extra_attributes].to_json
       params.require(:player).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :rank, :extra_attributes)
     end
 end

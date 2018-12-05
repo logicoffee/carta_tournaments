@@ -37,7 +37,10 @@ class EntryFlowTest < ActionDispatch::IntegrationTest
             last_name_kana: "すずき",
             first_name_kana: "いちろう",
             rank: 2,
-            extra_attributes: '{}'
+            extra_attributes: {
+              school_name: "かるた中学校",
+              school_year: 2
+            }
         }
       }
     end

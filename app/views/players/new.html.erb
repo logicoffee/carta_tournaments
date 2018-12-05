@@ -21,8 +21,13 @@
       <%= f.text_field :first_name_kana, class: 'form-control mb-4' %>
       
       <%= f.label :rank %>
-      <%= f.select :rank, [["無段", 0], ["初段", 1]], {}, class: 'form-control mb-4' %>
+      <%= f.select :rank, [["無段", 0], ["初段", 1], ["二段", 2], ["三段", 3], ["四段", 4], ["五段", 5], ["六段", 6], ["七段", 7], ["八段", 8], ["九段", 9], ["十段", 10]], {}, class: 'form-control mb-4' %>
 
+      <%= label_tag 'player[extra_attributes][school_name]', "学校名" %>
+      <%= text_field_tag 'player[extra_attributes][school_name]', "", class: 'form-control mb-4' %>
+
+      <%= label_tag 'player[extra_attributes][school_year]', "学年" %>
+      <%= select_tag 'player[extra_attributes][school_year]', options_for_select([["1年生", 1], ["2年生", 2], ["3年生", 3], ["4年生", 4], ["5年生", 5], ["6年生", 6]]), class: 'form-control mb-4' %>
 
       <%= f.submit "参加登録", class: 'btn btn-block btn-primary' %>
     <% end %>
