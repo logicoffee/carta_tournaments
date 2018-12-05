@@ -1,7 +1,7 @@
 class Player < ApplicationRecord
   belongs_to :team
 
-  validates :rank_code,       presence: true,                          format: { with: /\A[C-E]\z/ }
+  validates :rank,            presence: true
   validates :team_id,         presence: true
   validate  :full_name_should_be_present, :full_name_kana_should_be_present,
             :full_name_should_have_maximum_length, :full_name_kana_should_have_maximum_length,
