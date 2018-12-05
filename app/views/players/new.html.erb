@@ -2,7 +2,7 @@
 
 <div class="row justify-content-center">
   <div class="col-6">
-    <%= form_for @player, url: entries_team_path do |f| %>
+    <%= form_for @player, url: entries_team_path(tournament_id: @tournament.id) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
       <%= label_tag :tournament_class_id, "出場級" %>
