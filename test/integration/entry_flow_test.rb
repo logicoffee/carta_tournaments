@@ -2,51 +2,71 @@ require 'test_helper'
 
 class EntryFlowTest < ActionDispatch::IntegrationTest
   def setup
+    @tournament = tournaments(:shiga)
+    @tournament_class = @tournament.tournament_classes.first
     @team = teams(:kyoto)
     sign_in_as @team
+
+    @valid_player_params = {
+      last_name: "鈴木",
+      first_name: "一郎",
+      last_name_kana: "すずき",
+      first_name_kana: "いちろう",
+      rank: 2,
+      extra_attributes: {
+        school_name: "かるた中学校",
+        school_year: 2
+      }
+    }
+  end
+
+  test "exception for invalid tournament id" do
+    assert_raises do
+      get entries_team_path(tournament_id: 100)
+    end
+
+    assert_raises do
+      post entries_team_path(tournament_id: 100), params: {
+        tournament_class_id: @tournament_class.id,
+        player: @valid_player_params
+      }
+    end
+  end
+
+  test "exception for invalid tournament class id" do
+    assert_raises do
+      post entries_team_path(tournament_id: @tournament.id), params: {
+        tournament_class_id: 100,
+        player: @valid_player_params
+      }
+    end
   end
 
   test "invalid information" do
-    get entries_team_path(rank: "C")
+    get entries_team_path(tournament_id: @tournament.id)
     assert_no_difference 'Player.count' do
-      post entries_team_path(rank: "C"), params: {
-        players: [
-          {
+      post entries_team_path(tournament_id: @tournament.id), params: {
+        # Playerモデルのバリデーションをチェックするため, tournament_class_idは正しいものを設定
+        tournament_class_id: @tournament_class.id,
+        player: {
             last_name: " ",
             first_name: "あ"*31,
             last_name_kana: "ABC",
-            first_name_kana: "漢字"
-          },
-          {
-            last_name: "鈴木",
-            first_name: "一郎",
-            last_name_kana: "すずき",
-            first_name_kana: "いちろう"
-          }
-        ]
+            first_name_kana: "漢字",
+            rank: 20,
+            extra_attributes: []
+        }
       }
     end
     assert_select 'div .alert'
   end
 
   test "valid information" do
-    get entries_team_path(rank: "C")
-    assert_difference 'Player.count', 2 do
-      post entries_team_path(rank: "C"), params: {
-        players: [
-          {
-            last_name: "田中",
-            first_name: "一",
-            last_name_kana: "たなか",
-            first_name_kana: "はじめ"
-          },
-          {
-            last_name: "鈴木",
-            first_name: "一郎",
-            last_name_kana: "すずき",
-            first_name_kana: "いちろう"
-          }
-        ]
+    get entries_team_path(tournament_id: @tournament.id)
+    assert_difference [ 'Player.count', '@tournament_class.players.count' ], 1 do
+      post entries_team_path(tournament_id: @tournament.id), params: {
+        tournament_class_id: @tournament_class.id,
+        player: @valid_player_params
       }
     end
     assert flash[:success].present?

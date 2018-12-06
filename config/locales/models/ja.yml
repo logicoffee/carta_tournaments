@@ -17,6 +17,7 @@ ja:
         first_name_kana: 名(ふりがな)
         full_name: 氏名
         full_name_kana: ふりがな
+        rank: 段位
       admin:
         name: 氏名
         email: メールアドレス
