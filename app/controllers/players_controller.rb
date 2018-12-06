@@ -9,13 +9,16 @@ class PlayersController < ApplicationController
   def create
     @player          = current_team.players.build(player_params)
     @tournament      = Tournament.find(params[:tournament_id])
-    tournament_class = TournamentClass.find_by(id: params[:tournament_class_id])
-    @player.valid?
+    tournament_class = TournamentClass.find(params[:tournament_class_id])
 
-    if tournament_class && tournament_class.players << @player
+    begin
+      Player.transaction do
+        @player.save!
+        tournament_class.players << @player
+      end 
       flash[:success] = "登録が完了しました"
       redirect_to team_url
-    else
+    rescue
       render :new
     end
   end
