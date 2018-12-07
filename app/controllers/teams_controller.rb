@@ -3,13 +3,12 @@ class TeamsController < ApplicationController
   before_action :require_sign_in, only: %i[show]
 
   def show
-    @team = current_team
     @tournament = default_tournament
 
     # 出場人数が0であるtournament_classも取得するためにteam_idとdeletedにnilを指定している
     @tournament_classes = TournamentClass
       .includes(:players)
-      .where(tournament_id: @tournament.id, players: { team_id: [ @team.id, nil ], deleted: [ false, nil ] })
+      .where(tournament_id: @tournament.id, players: { team_id: [ current_team.id, nil ], deleted: [ false, nil ] })
   end
 
   def new
