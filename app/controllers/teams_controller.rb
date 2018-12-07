@@ -1,11 +1,20 @@
 class TeamsController < ApplicationController
+  include ApplicationHelper
   before_action :require_sign_in, only: %i[show]
 
   def show
-    @team = current_team
-    @entry_lists = KyotoRank::RankData.ranks.map do |rank|
-      Player.joins(:team).where(teams: { id: @team.id }, rank_code: rank, deleted: false)
-    end
+    @tournament = default_tournament
+
+    # 出場人数が0であるtournament_classも取得するためにteam_idとdeletedにnilを指定している
+    @tournament_classes = TournamentClass
+      .includes(:players)
+      .where(
+        tournament_id: @tournament.id,
+        players: {
+          team_id: [ current_team.id, nil ],
+          deleted: [ false, nil ]
+        }
+      )
   end
 
   def new

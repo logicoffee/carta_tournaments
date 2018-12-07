@@ -71,5 +71,8 @@ class EntryFlowTest < ActionDispatch::IntegrationTest
     end
     assert flash[:success].present?
     assert_redirected_to team_url
+
+    follow_redirect!
+    assert_select 'td', text: @valid_player_params[:last_name] + ' ' + @valid_player_params[:first_name]
   end
 end
