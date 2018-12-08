@@ -10,10 +10,19 @@ class Admin::PlayersController < ApplicationController
         players: { deleted: [ false, nil ] }
       )
 
+    @players = Player
+      .joins(:tournament_classes)
+      .where(
+        deleted: false,
+        tournament_classes: {
+          id: params[:tournament_class_id]
+        }
+      )
+
     respond_to do |format|
       format.html
       format.csv do
-        send_data render_to_string, filename: 'kyoto_c.csv', type: :csv
+        send_data render_to_string, filename: 'carta_tournament.csv', type: :csv
       end
     end
   end
