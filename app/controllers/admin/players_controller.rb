@@ -10,6 +10,7 @@ class Admin::PlayersController < ApplicationController
         players: { deleted: [ false, nil ] }
       )
 
+    # CSV用の変数
     @players = Player
       .joins(:tournament_classes)
       .where(
