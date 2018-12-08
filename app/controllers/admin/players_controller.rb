@@ -3,10 +3,12 @@ class Admin::PlayersController < ApplicationController
   before_action :require_sign_in_as_admin
 
   def index
-    @all_players = KyotoRank::RankData.ranks.map do |rank|
-      [ rank, Player.includes(:team).where(rank_code: rank).order(:created_at) ]
-    end
-      .to_h
+    @tournament_classes = TournamentClass
+      .includes(:players)
+      .where(
+        tournament_id: current_tournament.id,
+        players: { deleted: [ false, nil ] }
+      )
 
     respond_to do |format|
       format.html
