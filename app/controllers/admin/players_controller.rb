@@ -5,19 +5,10 @@ class Admin::PlayersController < ApplicationController
   def index
     @tournament_classes = TournamentClass
       .includes(:players)
+      .find_by_tournament_class_id(params[:tournament_class_id])
       .where(
         tournament_id: current_tournament.id,
         players: { deleted: [ false, nil ] }
-      )
-
-    # CSV用の変数
-    @players = Player
-      .joins(:tournament_classes)
-      .where(
-        deleted: false,
-        tournament_classes: {
-          id: params[:tournament_class_id]
-        }
       )
 
     respond_to do |format|
