@@ -78,9 +78,5 @@ class EntryFlowTest < ActionDispatch::IntegrationTest
 
     follow_redirect!
     assert_select 'td', text: @full_name
-
-    admin_sign_in_as admins(:ryo)
-    get admin_root_path
-    assert_select 'td', text: @full_name
   end
 end
