@@ -1,10 +1,10 @@
 <h1><%= current_tournament.name %> 選手一覧</h1>
 
-<div class="row">
-  <% @tournament_classes.each do |t_class| %>
-    <div class="col-3">
-      <h3>
-        <%= t_class.name %><%= link_to 'csv出力', admin_root_path(tournament_class_id: t_class.id, format: :csv), class: 'btn btn-info' %>
+<div class="row justify-content-center">
+  <div class="col-6">
+    <% @tournament_classes.each do |t_class| %>
+      <h3 class="mt-5">
+        <%= t_class.name %>  <%= link_to 'csv出力', admin_root_path(tournament_class_id: t_class.id, format: :csv), class: 'btn btn-sm btn-info' %>
       </h3>
       <table class="table">
         <tr>
@@ -18,6 +18,6 @@
           </tr>
         <% end %>
       </table>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
