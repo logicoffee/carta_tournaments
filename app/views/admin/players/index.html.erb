@@ -2,6 +2,8 @@
 
 <div class="row justify-content-center">
   <div class="col-6">
+    <%= link_to '全件csv出力', admin_root_path(format: :csv), class: 'btn btn-block btn-info' %>
+
     <% @tournament_classes.each do |t_class| %>
       <h3 class="mt-5">
         <%= t_class.name %>  <%= link_to 'csv出力', admin_root_path(tournament_class_id: t_class.id, format: :csv), class: 'btn btn-sm btn-info' %>
