@@ -1,14 +1,17 @@
 advanced_class:
+  id:         1
   tournament: shiga
   name:       上級者の部
   fee:        1500
 
 d_class:
+  id:         2
   tournament: shiga
   name:       D級
   fee:        1000
 
 e_class:
+  id:         3
   tournament: shiga
   name:       E級
   fee:        1000

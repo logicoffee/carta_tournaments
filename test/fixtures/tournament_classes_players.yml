@@ -1,0 +1,11 @@
+advanced_class_player:
+  tournament_class_id: 1
+  player_id:           1
+  created_at:          <%= Time.now.to_s(:db) %>
+  updated_at:          <%= Time.now.to_s(:db) %>
+
+d_class_player:
+  tournament_class_id: 2
+  player_id:           2
+  created_at:          <%= Time.now.to_s(:db) %>
+  updated_at:          <%= Time.now.to_s(:db) %>
