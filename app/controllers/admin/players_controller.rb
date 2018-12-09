@@ -23,7 +23,7 @@ class Admin::PlayersController < ApplicationController
     respond_to do |format|
       format.html
       format.csv do
-        send_data render_to_string, filename: 'carta_tournament.csv', type: :csv
+        send_data render_to_string, filename: 'players.csv', type: :csv
       end
     end
   end
