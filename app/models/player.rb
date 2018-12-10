@@ -1,5 +1,6 @@
 class Player < ApplicationRecord
   belongs_to :team
+  has_and_belongs_to_many :tournament_classes, join_table: :tournament_classes_players
 
   validates :rank,            presence: true
   validates :team_id,         presence: true

@@ -1,10 +1,12 @@
 require 'csv'
 
 CSV.generate do |csv|
-  header = %w[かるた会 氏名]
+  header = %w[出場級 かるた会 氏名]
   csv << header
-  @all_players[:C].each do |player|
-    data = [player.team.name, player.full_name]
-    csv << data
+  @tournament_classes.each do |t_class|
+    t_class.players.each do |player|
+      data = [t_class.name, player.team.name, player.full_name]
+      csv << data
+    end
   end
 end

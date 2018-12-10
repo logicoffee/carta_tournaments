@@ -7,9 +7,13 @@ class EntryFlowTest < ActionDispatch::IntegrationTest
     @team = teams(:kyoto)
     sign_in_as @team
 
+    last_name = "鈴木"
+    first_name = "一郎"
+    @full_name = last_name + ' ' + first_name
+
     @valid_player_params = {
-      last_name: "鈴木",
-      first_name: "一郎",
+      last_name: last_name,
+      first_name: first_name,
       last_name_kana: "すずき",
       first_name_kana: "いちろう",
       rank: 2,
@@ -73,6 +77,6 @@ class EntryFlowTest < ActionDispatch::IntegrationTest
     assert_redirected_to team_url
 
     follow_redirect!
-    assert_select 'td', text: @valid_player_params[:last_name] + ' ' + @valid_player_params[:first_name]
+    assert_select 'td', text: @full_name
   end
 end

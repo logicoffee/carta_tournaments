@@ -1,0 +1,20 @@
+advanced_player:
+  id:               1
+  last_name:        福沢
+  first_name:       諭吉
+  last_name_kana:   ふくざわ
+  first_name_kana:  ゆきち
+  rank:             3
+  team:             kyoto
+  extra_attributes: {}
+
+d_player:
+  id:               2
+  last_name:        野口
+  first_name:       英世
+  last_name_kana:   のぐち
+  first_name_kana:  ひでよ
+  rank:             1
+  team:             kyoto
+  extra_attributes: {}
+
