@@ -10,13 +10,19 @@
       </h3>
       <table class="table">
         <tr>
-          <th>氏名</th>
           <th>かるた会</th>
+          <th>氏名</th>
+          <th>段位</th>
+          <th>学校名</th>
+          <th>学年</th>
         </tr>
         <% t_class.players.each do |player| %>
           <tr>
-            <td><%= player.full_name %></td>
             <td><%= player.team.name %></td>
+            <td><%= player.full_name %></td>
+            <td><%= player.rank %></td>
+            <td><%= JSON.parse(player.extra_attributes)["school_name"] %></td>
+            <td><%= JSON.parse(player.extra_attributes)["school_year"] %></td>
           </tr>
         <% end %>
       </table>
