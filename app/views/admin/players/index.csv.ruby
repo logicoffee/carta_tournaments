@@ -5,7 +5,7 @@ CSV.generate do |csv|
   csv << header
   @tournament_classes.each do |t_class|
     t_class.players.each do |player|
-      school_info = JSON.parse(player.extra_attributes)
+      extra_attributes = JSON.parse(player.extra_attributes)
       data = [
         t_class.name,
         player.team.name,
@@ -14,8 +14,8 @@ CSV.generate do |csv|
         player.last_name_kana,
         player.first_name_kana,
         player.rank,
-        school_info["school_name"],
-        school_info["school_year"]
+        extra_attributes["school_name"],
+        extra_attributes["school_year"]
       ]
       csv << data
     end
