@@ -21,8 +21,8 @@
             <td><%= player.team.name %></td>
             <td><%= player.full_name %></td>
             <td><%= player.rank %></td>
-            <td><%= JSON.parse(player.extra_attributes)["school_name"] %></td>
-            <td><%= JSON.parse(player.extra_attributes)["school_year"] %></td>
+            <td><%= player.parsed_extra_attributes["school_name"] %></td>
+            <td><%= player.parsed_extra_attributes["school_year"] %></td>
           </tr>
         <% end %>
       </table>

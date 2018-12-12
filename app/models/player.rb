@@ -12,6 +12,10 @@ class Player < ApplicationRecord
     last_name + ' ' + first_name
   end
 
+  def parsed_extra_attributes
+    JSON.parse(extra_attributes)
+  end
+
   def delete_logically
     update_attribute(:deleted, true)
   end
