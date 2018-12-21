@@ -7,14 +7,9 @@ class TeamsController < ApplicationController
 
     # 出場人数が0であるtournament_classも取得するためにteam_idとdeletedにnilを指定している
     @tournament_classes = TournamentClass
-      .includes(:players)
-      .where(
-        tournament_id: @tournament.id,
-        players: {
-          team_id: [ current_team.id, nil ],
-          deleted: [ false, nil ]
-        }
-      )
+      .eager_load(:players)
+      .find_and_order_by_id(tournament_id: @tournament.id)
+      .merge(Player.default_query(admin: false, team_id: current_team.id))
   end
 
   def new
