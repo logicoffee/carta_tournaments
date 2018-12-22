@@ -27,7 +27,7 @@
       <%= text_field_tag 'player[extra_attributes][school_name]', "", class: 'form-control mb-4' %>
 
       <%= label_tag 'player[extra_attributes][school_year]', "学年" %>
-      <%= select_tag 'player[extra_attributes][school_year]', options_for_select([["1年生", 1], ["2年生", 2], ["3年生", 3], ["4年生", 4], ["5年生", 5], ["6年生", 6]]), class: 'form-control mb-4' %>
+      <%= select_tag 'player[extra_attributes][school_year]', options_for_select([["お選びください", ""], ["1年生", 1], ["2年生", 2], ["3年生", 3], ["4年生", 4], ["5年生", 5], ["6年生", 6]]), class: 'form-control mb-4' %>
 
       <%= f.submit "参加登録", class: 'btn btn-block btn-primary' %>
     <% end %>
