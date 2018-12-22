@@ -7,21 +7,25 @@
 </div>
 
 <h2 class="mt-5 mb-4">現在の申込状況</h2>
-<div class="row justify-content-center mt-5">
   <% @tournament_classes.each do |tournament_class| %>
-    <div class="col-3">
-      <h3><%= tournament_class.name %></h3>
-      <% if tournament_class.players.empty? %>
-        申込者はいません
-      <% else %>
-        <table class="table">
-          <tr>
-            <th>氏名</th>
-            <th>キャンセル</th>
-          </tr>
-          <%= render partial: 'shared/player', collection: tournament_class.players %>
-        </table>
-      <% end %>
+    <div class="row justify-content-center mt-5">
+      <div class="col-8">
+        <h3><%= tournament_class.name %><%= "(#{tournament_class.players.count}名)" %></h3>
+        <% if tournament_class.players.empty? %>
+          申込者はいません
+        <% else %>
+          <table class="table">
+            <tr>
+              <th>氏名</th>
+              <th>ふりがな</th>
+              <th>段位</th>
+              <th>学校名</th>
+              <th>学年</th>
+              <th>キャンセル</th>
+            </tr>
+            <%= render partial: 'shared/player', collection: tournament_class.players %>
+          </table>
+        <% end %>
+      </div>
     </div>
   <% end %>
-</div>

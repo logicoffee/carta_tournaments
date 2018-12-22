@@ -1,4 +1,8 @@
 <tr>
   <td><%= player.full_name %></td>
+  <td><%= player.full_name_kana %></td>
+  <td><%= player.rank %></td>
+  <td><%= player.parsed_extra_attributes["school_name"] %></td>
+  <td><%= player.parsed_extra_attributes["school_year"] %></td>
   <td><%= link_to "キャンセル", delete_entry_team_path(player), method: :delete, class: 'btn btn-secondary btn-sm' %></td>
 </tr>

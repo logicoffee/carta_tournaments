@@ -4,12 +4,12 @@ class Admin::PlayersController < ApplicationController
 
   def index
     @tournament_classes = TournamentClass
-      .includes(:players)
-      .find_by_tournament_class_id(params[:tournament_class_id])
-      .where(
+      .eager_load(:players)
+      .find_and_order_by_id(
         tournament_id: current_tournament.id,
-        players: { deleted: [ false, nil ] }
+        tournament_class_id: params[:tournament_class_id]
       )
+      .merge(Player.default_query(admin: true))
 
     respond_to do |format|
       format.html
