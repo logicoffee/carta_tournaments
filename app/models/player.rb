@@ -3,7 +3,7 @@ class Player < ApplicationRecord
   has_and_belongs_to_many :tournament_classes, join_table: :tournament_classes_players
 
   scope :default_query, -> (admin:, team_id: nil){
-    base_narrowing = where(
+    base_filtering = where(
       deleted: [false, nil]
     )
     base_sorting = order(
@@ -12,11 +12,11 @@ class Player < ApplicationRecord
       "first_name_kana"
     )
     if admin
-      base_narrowing
+      base_filtering
         .merge(base_sorting)
         .order(:team_id)
     else
-      base_narrowing
+      base_filtering
         .where(team_id: [ team_id, nil ])
         .merge(base_sorting)
     end
