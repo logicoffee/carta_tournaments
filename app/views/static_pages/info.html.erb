@@ -14,10 +14,10 @@
       <tr>
         <th>参加費</th>
         <td>
-          <table>
+          <table class="table-borderless">
             <% @tournament.tournament_classes.map do |t_class| %>
               <tr>
-                <td><%= t_class.name %></td><td><%= t_class.fee %></td>
+                <td><%= t_class.name %></td><td><%= t_class.formatted_fee %></td>
               </tr>
             <% end %>
           </table>
