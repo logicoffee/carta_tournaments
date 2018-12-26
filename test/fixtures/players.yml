@@ -6,7 +6,7 @@ advanced_player:
   first_name_kana:  ゆきち
   rank:             3
   team:             kyoto
-  extra_attributes: {}
+  extra_attributes: '{}'
 
 d_player:
   id:               2
@@ -16,5 +16,5 @@ d_player:
   first_name_kana:  ひでよ
   rank:             1
   team:             kyoto
-  extra_attributes: {}
+  extra_attributes: '{}'
 
