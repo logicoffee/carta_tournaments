@@ -12,7 +12,7 @@ class Tournament < ApplicationRecord
                                  tournament_id: id,
                                  players: { deleted: false }
                                )
-    CSV.generate do |csv|
+    CSV.generate(encoding: 'Shift_JIS') do |csv|
       csv << [
         "かるた会",
         "氏",
