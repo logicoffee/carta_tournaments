@@ -1,6 +1,6 @@
 require 'csv'
 
-CSV.generate do |csv|
+CSV.generate(encoding: 'Shift_JIS') do |csv|
   header = %w[出場級 かるた会 氏 名 氏(ふりがな) 名(ふりがな) 段位 学校名 学年]
   csv << header
   @tournament_classes.each do |t_class|
