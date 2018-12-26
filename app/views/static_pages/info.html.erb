@@ -5,7 +5,7 @@
     <table class="table">
       <tr>
         <th>開催日</th>
-        <td><%= @tournament.schedule %></td>
+        <td><%= @tournament.schedule.strftime('%Y年%m月%d日') %></td>
       </tr>
       <tr>
         <th>大会会場</th>
