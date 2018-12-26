@@ -15,5 +15,5 @@
   </div>
 </div>
 <p id="admin_sign_in">
-  管理者ログインは<%= link_to "こちら", admin_sign_in_path %>
+  管理者ページは<%= link_to "こちら", admin_signed_in? ? admin_root_path : admin_sign_in_path %>
 </p>
