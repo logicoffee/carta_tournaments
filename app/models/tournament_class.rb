@@ -11,4 +11,8 @@ class TournamentClass < ApplicationRecord
       base_query.where(id: tournament_class_id)
     end
   }
+
+  def formatted_fee
+    fee.to_s(:delimited) + '円'
+  end
 end
