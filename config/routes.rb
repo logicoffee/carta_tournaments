@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
   get :info, to: 'static_pages#info'
+  get :inquiry, to: 'static_pages#inquiry'
 
   resource :team, except: %i[new create destroy] do
     get    :entries,      to: 'players#new'

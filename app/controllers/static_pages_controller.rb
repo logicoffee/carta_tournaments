@@ -5,4 +5,7 @@ class StaticPagesController < ApplicationController
   def info
     @tournament = Tournament.includes(:tournament_classes).first
   end
+
+  def inquiry
+  end
 end
