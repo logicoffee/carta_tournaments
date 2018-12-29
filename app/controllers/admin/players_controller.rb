@@ -4,7 +4,7 @@ class Admin::PlayersController < ApplicationController
 
   def index
     @tournament_classes = TournamentClass
-      .eager_load(:players)
+      .eager_load(players: [:team])
       .find_and_order_by_id(
         tournament_id: current_tournament.id,
         tournament_class_id: params[:tournament_class_id]

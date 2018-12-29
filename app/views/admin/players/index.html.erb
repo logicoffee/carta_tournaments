@@ -6,7 +6,7 @@
 
     <% @tournament_classes.each do |t_class| %>
       <h3 class="mt-5">
-        <%= t_class.name %><%= "(#{t_class.players.count}名)" %>  <%= link_to 'csv出力', admin_root_path(tournament_class_id: t_class.id, format: :csv), class: 'btn btn-sm btn-info' %>
+        <%= t_class.name %><%= "(#{t_class.players.size}名)" %>  <%= link_to 'csv出力', admin_root_path(tournament_class_id: t_class.id, format: :csv), class: 'btn btn-sm btn-info' %>
       </h3>
       <table class="table">
         <tr>
