@@ -79,4 +79,11 @@ class EntryFlowTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_select 'td', text: @full_name
   end
+
+  test "update player" do
+    player = Player.first
+    get edit_entries_team_path(player)
+    put update_entries_team_path(player), params: { player: @valid_player_params }
+    assert_redirected_to team_url
+  end
 end
