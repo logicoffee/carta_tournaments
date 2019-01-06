@@ -23,6 +23,20 @@ class PlayersController < ApplicationController
     end
   end
 
+  def edit
+    @player = Player.find(params[:id])
+  end
+
+  def update
+    @player = Player.find(params[:id])
+    if @player.update_attributes(player_params)
+      flash[:success] = "選手情報を更新しました"
+      redirect_to team_url
+    else
+      render :edit
+    end
+  end
+
   def destroy
     player = Player.find_by!(id: params[:id], team_id: session[:team_id])
 

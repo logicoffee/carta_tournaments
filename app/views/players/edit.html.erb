@@ -1,0 +1,37 @@
+<h1>選手情報編集</h1>
+
+
+<div class="row justify-content-center">
+  <div class="col-6">
+    <%= form_for @player, url: edit_entries_team_path, method: :put do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, class: 'form-control mb-4' %>
+      
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class: 'form-control mb-4' %>
+      
+      <%= f.label :last_name_kana %>
+      <%= f.text_field :last_name_kana, class: 'form-control mb-4' %>
+      
+      <%= f.label :first_name_kana %>
+      <%= f.text_field :first_name_kana, class: 'form-control mb-4' %>
+      
+      <%= f.label :rank %>
+      <%= f.select :rank, [["無段", 0], ["初段", 1], ["二段", 2], ["三段", 3], ["四段", 4], ["五段", 5], ["六段", 6], ["七段", 7], ["八段", 8], ["九段", 9], ["十段", 10]], {}, class: 'form-control mb-4' %>
+
+      <p class="alert alert-info mt-5">
+        「上級者の部」<strong>以外</strong>に出場される学生の方は, 学校名と学年をご入力ください.
+      </p>
+
+      <%= label_tag 'player[extra_attributes][school_name]', "学校名" %>
+      <%= text_field_tag 'player[extra_attributes][school_name]', @player.parsed_extra_attributes["school_name"], class: 'form-control mb-4' %>
+
+      <%= label_tag 'player[extra_attributes][school_year]', "学年" %>
+      <%= select_tag 'player[extra_attributes][school_year]', options_for_select([["お選びください", ""], ["1年生", 1], ["2年生", 2], ["3年生", 3], ["4年生", 4], ["5年生", 5], ["6年生", 6]]), class: 'form-control mb-4' %>
+
+      <%= f.submit "選手情報更新", class: 'btn btn-block btn-primary' %>
+    <% end %>
+  </div>
+</div>
