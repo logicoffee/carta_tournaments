@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resource :team, except: %i[new create destroy] do
     get    :entries,      to: 'players#new'
     post   :entries,      to: 'players#create'
+    get    'entries/edit/:id', to: 'players#edit',   as: :edit_entries
+    put    'entries/edit/:id', to: 'players#update', as: :update_entries
     delete 'entries/:id', to: 'players#destroy', as: :delete_entry
   end
   get  :sign_up, to: 'teams#new'
