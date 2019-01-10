@@ -4,5 +4,6 @@
   <td><%= player.rank %></td>
   <td><%= player.parsed_extra_attributes["school_name"] %></td>
   <td><%= player.parsed_extra_attributes["school_year"] %></td>
-  <td><%= link_to "キャンセル", delete_entry_team_path(player), method: :delete, class: 'btn btn-secondary btn-sm' %></td>
+  <td><%= link_to "選手情報編集", edit_entries_team_path(player), class: 'btn btn-secondary btn-sm' %></td>
+  <td><%= link_to "キャンセル", delete_entry_team_path(player), method: :delete, data: { confirm: "申込をキャンセルしますか？" }, class: 'btn btn-secondary btn-sm' %></td>
 </tr>

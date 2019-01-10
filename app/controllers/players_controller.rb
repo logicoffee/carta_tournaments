@@ -2,24 +2,38 @@ class PlayersController < ApplicationController
   before_action :require_sign_in
 
   def new
-    @player     = Player.new
+    @player     = Player.new(extra_attributes: "{}")
     @tournament = Tournament.find(params[:tournament_id])
   end
 
   def create
     @player          = current_team.players.build(player_params)
     @tournament      = Tournament.find(params[:tournament_id])
-    tournament_class = TournamentClass.find(params[:tournament_class_id])
+    @tournament_class = TournamentClass.find(params[:tournament_class_id])
 
     begin
       Player.transaction do
         @player.save!
-        tournament_class.players << @player
+        @tournament_class.players << @player
       end 
       flash[:success] = "登録が完了しました"
       redirect_to team_url
     rescue
       render :new
+    end
+  end
+
+  def edit
+    @player = Player.find(params[:id])
+  end
+
+  def update
+    @player = Player.find(params[:id])
+    if @player.update_attributes(player_params)
+      flash[:success] = "選手情報を更新しました"
+      redirect_to team_url
+    else
+      render :edit
     end
   end
 

@@ -1,12 +1,10 @@
-<h1><%= @tournament.name %> 出場申込</h1>
+<h1>選手情報編集</h1>
+
 
 <div class="row justify-content-center">
   <div class="col-6">
-    <%= form_for @player, url: entries_team_path(tournament_id: @tournament.id) do |f| %>
+    <%= form_for @player, url: edit_entries_team_path, method: :put do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-
-      <%= label_tag :tournament_class_id, "出場級" %>
-      <%= select_tag :tournament_class_id, options_from_collection_for_select(@tournament.tournament_classes.all, :id, :name, @tournament_class.id), class: 'form-control mb-4' %>
 
       <%= f.label :last_name %>
       <%= f.text_field :last_name, class: 'form-control mb-4' %>
@@ -31,9 +29,9 @@
       <%= text_field_tag 'player[extra_attributes][school_name]', @player.parsed_extra_attributes["school_name"], class: 'form-control mb-4' %>
 
       <%= label_tag 'player[extra_attributes][school_year]', "学年" %>
-      <%= select_tag 'player[extra_attributes][school_year]', options_for_select([["お選びください", ""], ["1年生", 1], ["2年生", 2], ["3年生", 3], ["4年生", 4], ["5年生", 5], ["6年生", 6]], selected: @player.parsed_extra_attributes["school_year"]), class: 'form-control mb-4' %>
+      <%= select_tag 'player[extra_attributes][school_year]', options_for_select([["お選びください", ""], ["1年生", 1], ["2年生", 2], ["3年生", 3], ["4年生", 4], ["5年生", 5], ["6年生", 6]], @player.parsed_extra_attributes["school_year"]), class: 'form-control mb-4' %>
 
-      <%= f.submit "参加登録", class: 'btn btn-block btn-primary' %>
+      <%= f.submit "選手情報更新", class: 'btn btn-block btn-primary' %>
     <% end %>
   </div>
 </div>
